@@ -1,0 +1,15 @@
+{
+    "892622176": [
+        {
+            "license_key": "test194f1a311af696601e8c222a",
+            "pin_code": "3195239788",
+            "kasa_name": "Каса №1",
+            "index": 1,
+            "shift_id": null,
+            "last_polled_shift_status": "CLOSED",
+            "last_receipt_datetime": null,
+            "last_receipt_id": null,
+            "shift_closed": true
+        }
+    ]
+}
