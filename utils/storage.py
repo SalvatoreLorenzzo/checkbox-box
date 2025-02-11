@@ -1,6 +1,5 @@
-# utils/storage.py
 import os
-import sys
+from dateutil.parser import parser
 import json
 import re
 from datetime import datetime
@@ -8,66 +7,59 @@ from config.settings import TOKEN_FILE, KASAS_FILE, TELEGRAM_TOKEN_REGEX
 
 def check_or_create_token_file():
     if not os.path.exists(TOKEN_FILE):
-        print(f"[INFO] '{TOKEN_FILE}' not found. Creating an empty file.")
-        data = {"TELEGRAM_TOKEN": ""}
         os.makedirs(os.path.dirname(TOKEN_FILE), exist_ok=True)
-        with open(TOKEN_FILE, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=4)
-        print("Please open token.json, insert your TELEGRAM_TOKEN, and restart.")
-        sys.exit(1)
-    else:
-        if os.path.getsize(TOKEN_FILE) == 0:
-            print("[INFO] token.json is empty. Fill TELEGRAM_TOKEN.")
-            sys.exit(1)
-        else:
-            try:
-                with open(TOKEN_FILE, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-            except json.JSONDecodeError:
-                print("[ERROR] token.json is invalid JSON.")
-                sys.exit(1)
-
-            tg = data.get("TELEGRAM_TOKEN", "")
-            if not tg:
-                print("[ERROR] TELEGRAM_TOKEN is empty.")
-                sys.exit(1)
-            if not re.match(TELEGRAM_TOKEN_REGEX, tg):
-                print("[ERROR] TELEGRAM_TOKEN not valid.")
-                sys.exit(1)
+        with open(TOKEN_FILE, 'w') as f:
+            json.dump({"TELEGRAM_TOKEN": ""}, f)
+        raise FileNotFoundError(f"Створено {TOKEN_FILE}. Заповніть токен!")
+    
+    with open(TOKEN_FILE) as f:
+        data = json.load(f)
+        if not re.match(TELEGRAM_TOKEN_REGEX, data.get("TELEGRAM_TOKEN", "")):
+            raise ValueError("Невірний формат Telegram токена!")
 
 def load_token():
-    with open(TOKEN_FILE, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-        return data.get("TELEGRAM_TOKEN", "")
+    with open(TOKEN_FILE) as f:
+        return json.load(f)["TELEGRAM_TOKEN"]
 
 def load_kasas_data():
-    if os.path.exists(KASAS_FILE):
-        try:
-            with open(KASAS_FILE, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except json.JSONDecodeError:
-            return {}
-    else:
+    if not os.path.exists(KASAS_FILE):
         return {}
 
-def save_kasas_data(kasas_data):
-    pkg = {}
-    for user_id, kasas_list in kasas_data.items():
-        new_list = []
-        for k in kasas_list:
-            kc = k.copy()
-            kc.pop('task_started', None)
-            kc.pop('cashier_token', None)
-            kc.pop('last_shift_status', None)
-            kc.pop('started_with_open_shift', None)
-            kc.pop('started_at', None)
-            kc.pop('receipt_counter', None)
+    with open(KASAS_FILE) as f:
+        data = json.load(f)
+        for user_id, kasas in data.items():
+            for kasa in kasas:
+                # Ініціалізація обов'язкових полів
+                kasa.setdefault('shift_id', None)
+                kasa.setdefault('last_polled_shift_status', None)
+                kasa.setdefault('last_receipt_datetime', None)
+                kasa.setdefault('shift_closed', True)
+                kasa.setdefault('task_started', False)
+                
+                # Конвертація строкового часу в об'єкт datetime
+                if isinstance(kasa.get('last_receipt_datetime'), str):
+                    try:
+                        kasa['last_receipt_datetime'] = parser.isoparse(kasa['last_receipt_datetime'])
+                    except:
+                        kasa['last_receipt_datetime'] = None
+        return data
 
-            if isinstance(kc.get('last_receipt_datetime'), datetime):
-                kc['last_receipt_datetime'] = kc['last_receipt_datetime'].isoformat()
-            new_list.append(kc)
-        pkg[user_id] = new_list
-
+def save_kasas_data(data):
+    sanitized = {}
+    for user_id, kasas in data.items():
+        sanitized[user_id] = [{
+            'license_key': k['license_key'],
+            'pin_code': k['pin_code'],
+            'kasa_name': k['kasa_name'],
+            'shift_id': k.get('shift_id'),
+            'last_receipt_datetime': (
+                k['last_receipt_datetime'].isoformat()
+                if isinstance(k.get('last_receipt_datetime'), datetime)
+                else None
+            ),
+            'last_receipt_id': k.get('last_receipt_id')
+        } for k in kasas]
+    
     os.makedirs(os.path.dirname(KASAS_FILE), exist_ok=True)
-    with open(KASAS_FILE, 'w', encoding='utf-8') as f:
-        json.dump(pkg, f, ensure_ascii=False, indent=4)
+    with open(KASAS_FILE, 'w') as f:
+        json.dump(sanitized, f, indent=2)
