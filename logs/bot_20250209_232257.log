@@ -1,0 +1,63 @@
+[2025-02-09 23:22:57,667] [INFO] [aiogram.dispatcher] Start polling
+[2025-02-09 23:22:57,708] [INFO] [aiogram.dispatcher] Run polling for bot @checkbox_supertest_bot id=8192225578 - 'CheckboxMy'
+[2025-02-09 23:23:15,909] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 892622176
+[2025-02-09 23:23:15,909] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 892622176
+[2025-02-09 23:23:15,909] [INFO] [handlers.start] [handle_shift_and_receipts] Fetching cashier token for kasa 'Каса №1'
+[2025-02-09 23:23:16,016] [INFO] [aiogram.event] Update id=591321378 is handled. Duration 296 ms by bot id=8192225578
+[2025-02-09 23:23:16,286] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 87dcd194-3fbf-4919-9f4a-33d4d5077b0b
+[2025-02-09 23:23:16,427] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-09 23:23:16,491] [INFO] [handlers.start] [handle_shift_and_receipts] Shift closed for kasa 'Каса №1'
+[2025-02-09 23:23:46,564] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 892622176
+[2025-02-09 23:23:46,565] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 892622176
+[2025-02-09 23:23:46,715] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 06af9897-0df5-4997-a5b0-633fa78ccc1d
+[2025-02-09 23:23:46,865] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-09 23:23:46,865] [INFO] [handlers.start] [handle_shift_and_receipts] Shift opened for kasa 'Каса №1' (ID: 06af9897-0df5-4997-a5b0-633fa78ccc1d)
+[2025-02-09 23:23:47,170] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'
+[2025-02-09 23:23:57,188] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 892622176
+[2025-02-09 23:23:57,188] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 892622176
+[2025-02-09 23:23:57,336] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 06af9897-0df5-4997-a5b0-633fa78ccc1d
+[2025-02-09 23:23:57,495] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-09 23:23:57,496] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-09 23:23:57,647] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'
+[2025-02-09 23:24:07,655] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 892622176
+[2025-02-09 23:24:07,655] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 892622176
+[2025-02-09 23:24:07,810] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 06af9897-0df5-4997-a5b0-633fa78ccc1d
+[2025-02-09 23:24:07,960] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-09 23:24:07,960] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-09 23:24:08,114] [INFO] [handlers.start] [Fetch] Processing receipt cc2ede17-86d0-4046-9047-9b43b14a1a70: service_out=0, total_sum=23000, payments=[{'type': 'CASH', 'pawnshop_is_return': None, 'operation_type': None, 'value': 24000, 'label': 'Готівка'}]
+[2025-02-09 23:24:08,256] [INFO] [services.checkbox_api] [get_receipt_info] Successfully retrieved receipt info for cc2ede17-86d0-4046-9047-9b43b14a1a70
+[2025-02-09 23:24:08,256] [INFO] [handlers.start] [SendOne] Processing receipt: ID: cc2ede17-86d0-4046-9047-9b43b14a1a70, service_out: None, total_sum: 23000, payments: [{'type': 'CASH', 'pawnshop_is_return': None, 'operation_type': None, 'value': 24000, 'label': 'Готівка'}]
+[2025-02-09 23:24:09,550] [INFO] [handlers.start] [Fetch] Fetched 1 new receipts on 'Каса №1'
+[2025-02-09 23:24:19,553] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 892622176
+[2025-02-09 23:24:19,553] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 892622176
+[2025-02-09 23:24:19,695] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 06af9897-0df5-4997-a5b0-633fa78ccc1d
+[2025-02-09 23:24:19,851] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-09 23:24:19,851] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-09 23:24:20,000] [INFO] [handlers.start] [Fetch] Processing receipt cc2ede17-86d0-4046-9047-9b43b14a1a70: service_out=0, total_sum=23000, payments=[{'type': 'CASH', 'pawnshop_is_return': None, 'operation_type': None, 'value': 24000, 'label': 'Готівка'}]
+[2025-02-09 23:24:20,000] [INFO] [handlers.start] [Fetch] Processing receipt 5948f506-162d-47a9-ac0c-60dd7c2f6d65: service_out=0, total_sum=7500, payments=[{'type': 'CASH', 'pawnshop_is_return': None, 'operation_type': None, 'value': 7500, 'label': 'Готівка'}]
+[2025-02-09 23:24:20,140] [INFO] [services.checkbox_api] [get_receipt_info] Successfully retrieved receipt info for 5948f506-162d-47a9-ac0c-60dd7c2f6d65
+[2025-02-09 23:24:20,140] [INFO] [handlers.start] [SendOne] Ignoring receipt 5948f506-162d-47a9-ac0c-60dd7c2f6d65 due to type SERVICE_OUT.
+[2025-02-09 23:24:20,140] [INFO] [handlers.start] [Fetch] Fetched 1 new receipts on 'Каса №1'
+[2025-02-09 23:24:30,164] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 892622176
+[2025-02-09 23:24:30,164] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 892622176
+[2025-02-09 23:24:30,343] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 06af9897-0df5-4997-a5b0-633fa78ccc1d
+[2025-02-09 23:24:30,521] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-09 23:24:30,521] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-09 23:24:30,690] [INFO] [handlers.start] [Fetch] Processing receipt 5948f506-162d-47a9-ac0c-60dd7c2f6d65: service_out=0, total_sum=7500, payments=[{'type': 'CASH', 'pawnshop_is_return': None, 'operation_type': None, 'value': 7500, 'label': 'Готівка'}]
+[2025-02-09 23:24:30,690] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'
+[2025-02-09 23:24:40,703] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 892622176
+[2025-02-09 23:24:40,703] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 892622176
+[2025-02-09 23:24:40,865] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 06af9897-0df5-4997-a5b0-633fa78ccc1d
+[2025-02-09 23:24:41,063] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-09 23:24:41,063] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-09 23:24:41,236] [INFO] [handlers.start] [Fetch] Processing receipt 5948f506-162d-47a9-ac0c-60dd7c2f6d65: service_out=0, total_sum=7500, payments=[{'type': 'CASH', 'pawnshop_is_return': None, 'operation_type': None, 'value': 7500, 'label': 'Готівка'}]
+[2025-02-09 23:24:41,237] [INFO] [handlers.start] [Fetch] Processing receipt cf12d572-b40c-4da0-99c4-b132705c02e3: service_out=0, total_sum=6000, payments=[{'type': 'CASH', 'pawnshop_is_return': None, 'operation_type': None, 'value': 6000, 'label': 'Готівка'}]
+[2025-02-09 23:24:41,420] [INFO] [services.checkbox_api] [get_receipt_info] Successfully retrieved receipt info for cf12d572-b40c-4da0-99c4-b132705c02e3
+[2025-02-09 23:24:41,420] [INFO] [handlers.start] [SendOne] Processing receipt: ID: cf12d572-b40c-4da0-99c4-b132705c02e3, service_out: None, total_sum: 6000, payments: [{'type': 'CASH', 'pawnshop_is_return': None, 'operation_type': None, 'value': 6000, 'label': 'Готівка'}]
+[2025-02-09 23:24:42,590] [INFO] [handlers.start] [Fetch] Fetched 1 new receipts on 'Каса №1'
+[2025-02-09 23:24:52,594] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 892622176
+[2025-02-09 23:24:52,594] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 892622176
+[2025-02-09 23:24:52,772] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 06af9897-0df5-4997-a5b0-633fa78ccc1d
+[2025-02-09 23:24:52,946] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-09 23:24:53,143] [INFO] [handlers.start] [Report] Ignoring receipt 5948f506-162d-47a9-ac0c-60dd7c2f6d65 with type SERVICE_OUT
+[2025-02-09 23:24:53,258] [INFO] [handlers.start] [handle_shift_and_receipts] Shift closed for kasa 'Каса №1'
