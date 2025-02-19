@@ -1,0 +1,54 @@
+[2025-02-10 00:47:01,575] [INFO] [aiogram.dispatcher] Start polling
+[2025-02-10 00:47:01,625] [INFO] [aiogram.dispatcher] Run polling for bot @checkbox_supertest_bot id=8192225578 - 'CheckboxMy'
+[2025-02-10 00:47:13,084] [INFO] [aiogram.event] Update id=591321385 is handled. Duration 188 ms by bot id=8192225578
+[2025-02-10 00:47:17,380] [INFO] [aiogram.event] Update id=591321386 is handled. Duration 78 ms by bot id=8192225578
+[2025-02-10 00:47:23,588] [INFO] [aiogram.event] Update id=591321387 is handled. Duration 110 ms by bot id=8192225578
+[2025-02-10 00:47:40,573] [INFO] [aiogram.event] Update id=591321388 is handled. Duration 750 ms by bot id=8192225578
+[2025-02-10 00:47:40,574] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 1295684614
+[2025-02-10 00:47:40,574] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 1295684614
+[2025-02-10 00:47:40,721] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': None
+[2025-02-10 00:47:40,940] [INFO] [handlers.start] [handle_shift_and_receipts] Shift closed for kasa 'Каса №1'
+[2025-02-10 00:47:41,134] [ERROR] [services.checkbox_api] [get_report_receipt_info] Exception while fetching reports: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+[2025-02-10 00:47:41,134] [ERROR] [handlers.start] [handle_shift_and_receipts] Звіт Z не знайдено для зміни (None).
+[2025-02-10 00:48:11,129] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 1295684614
+[2025-02-10 00:48:11,129] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 1295684614
+[2025-02-10 00:48:11,271] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': None
+[2025-02-10 00:48:11,271] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-10 00:48:41,293] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 1295684614
+[2025-02-10 00:48:41,293] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 1295684614
+[2025-02-10 00:48:41,438] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 2aedbf13-bec3-4a5b-a608-f13fc34f0708
+[2025-02-10 00:48:41,590] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-10 00:48:41,590] [INFO] [handlers.start] [handle_shift_and_receipts] Shift opened for kasa 'Каса №1' (ID: 2aedbf13-bec3-4a5b-a608-f13fc34f0708)
+[2025-02-10 00:48:41,926] [ERROR] [services.checkbox_api] [get_report_receipt_info] No reports found for shift 2aedbf13-bec3-4a5b-a608-f13fc34f0708
+[2025-02-10 00:48:41,926] [ERROR] [handlers.start] [handle_shift_and_receipts] Звіт X не знайдено для зміни (2aedbf13-bec3-4a5b-a608-f13fc34f0708).
+[2025-02-10 00:48:42,071] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'
+[2025-02-10 00:48:52,084] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 1295684614
+[2025-02-10 00:48:52,084] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 1295684614
+[2025-02-10 00:48:52,242] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 2aedbf13-bec3-4a5b-a608-f13fc34f0708
+[2025-02-10 00:48:52,391] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-10 00:48:52,392] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-10 00:48:52,533] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'
+[2025-02-10 00:49:02,552] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 1295684614
+[2025-02-10 00:49:02,552] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 1295684614
+[2025-02-10 00:49:02,703] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 2aedbf13-bec3-4a5b-a608-f13fc34f0708
+[2025-02-10 00:49:02,878] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-10 00:49:02,878] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-10 00:49:03,014] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'
+[2025-02-10 00:49:13,030] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 1295684614
+[2025-02-10 00:49:13,030] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 1295684614
+[2025-02-10 00:49:13,178] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 2aedbf13-bec3-4a5b-a608-f13fc34f0708
+[2025-02-10 00:49:13,326] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-10 00:49:13,326] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-10 00:49:13,464] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'
+[2025-02-10 00:49:23,466] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 1295684614
+[2025-02-10 00:49:23,466] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 1295684614
+[2025-02-10 00:49:23,625] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 2aedbf13-bec3-4a5b-a608-f13fc34f0708
+[2025-02-10 00:49:23,784] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-10 00:49:23,785] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-10 00:49:23,919] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'
+[2025-02-10 00:49:33,909] [INFO] [handlers.start] [poll_kasa_loop] Polling kasa: Каса №1 for user: 1295684614
+[2025-02-10 00:49:33,909] [INFO] [handlers.start] [handle_shift_and_receipts] Handling kasa 'Каса №1' for user: 1295684614
+[2025-02-10 00:49:34,067] [INFO] [handlers.start] [handle_shift_and_receipts] Current shift ID for kasa 'Каса №1': 2aedbf13-bec3-4a5b-a608-f13fc34f0708
+[2025-02-10 00:49:34,225] [INFO] [handlers.start] [handle_shift_and_receipts] Shift info fetched for kasa 'Каса №1'
+[2025-02-10 00:49:34,225] [INFO] [handlers.start] [handle_shift_and_receipts] No change in shift status for kasa 'Каса №1'
+[2025-02-10 00:49:34,357] [INFO] [handlers.start] [Fetch] No new receipts found on 'Каса №1'

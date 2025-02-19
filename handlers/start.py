@@ -7,7 +7,7 @@ import asyncio
 import logging
 from datetime import datetime, timezone
 import dateutil.parser
-
+from config.settings import POLL_INTERVAL_OPEN, POLL_INTERVAL_CLOSED, DEBUG_SHIFT_LOG
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 
@@ -107,6 +107,9 @@ async def poll_kasa_loop(user_id, kasa_info):
             await asyncio.sleep(10)
 
 async def handle_shift_and_receipts(user_id, kasa):
+    from datetime import datetime, timezone
+    import dateutil.parser
+    # (інші імпорти та початкова логіка залишаються без змін)
     lic = kasa['license_key']
     pin = kasa['pin_code']
     kasa_name = kasa.get('kasa_name', 'N/A')
@@ -146,6 +149,17 @@ async def handle_shift_and_receipts(user_id, kasa):
     old_status = kasa.get('last_polled_shift_status')
     kasa['last_polled_shift_status'] = new_status
 
+    # Формування часових діапазонів для запиту звітів
+    if 'shift_start_datetime' in kasa and kasa['shift_start_datetime']:
+        if isinstance(kasa['shift_start_datetime'], str):
+            from_date_str = kasa['shift_start_datetime']
+        else:
+            from_date_str = kasa['shift_start_datetime'].isoformat()
+    else:
+        from_date_str = datetime.now(timezone.utc).isoformat()
+    to_date_str = datetime.now(timezone.utc).isoformat()
+
+# У відповідному блоці для OPENED
     if new_status == 'OPENED' and old_status != 'OPENED':
         kasa['shift_id'] = sid
         kasa['shift_closed'] = False
@@ -157,8 +171,35 @@ async def handle_shift_and_receipts(user_id, kasa):
                 kasa['shift_start_datetime'] = datetime.now(timezone.utc)
         if not kasa.get('last_receipt_datetime'):
             kasa['last_receipt_datetime'] = kasa['shift_start_datetime']
+
         logger.info(f"[handle_shift_and_receipts] Shift opened for kasa '{kasa_name}' (ID: {sid})")
         await bot.send_message(user_id, f"Зміна відкрита на касі '{kasa_name}'.")
+        
+        # --- Отримання X звіту ---
+        from_date_str = kasa['shift_start_datetime'].isoformat()
+        to_date_str = datetime.now(timezone.utc).isoformat()
+        from services.checkbox_api import get_report_receipt_info, get_receipt_pdf
+        reports = await get_report_receipt_info(lic, kasa['cashier_token'], is_z_report=False, shift_id=sid,
+                                               from_date=from_date_str, to_date=to_date_str)
+        pdf_x = None
+        if reports:
+            for rep in reports:
+                receipt_id = rep.get('last_receipt_id') or rep.get('id')
+                logger.info(f"[handle_shift_and_receipts] Trying X report with receipt_id: {receipt_id}")
+                pdf_x = await get_receipt_pdf(kasa, receipt_id)
+                if pdf_x:
+                    logger.info(f"[handle_shift_and_receipts] Successfully retrieved X report PDF for receipt_id: {receipt_id}")
+                    break
+            if pdf_x:
+                from aiogram.types import BufferedInputFile
+                x_file = BufferedInputFile(pdf_x, filename=f"x_report_{sid}.pdf")
+                await bot.send_document(user_id, x_file, caption=f"X звіт для зміни ({sid})")
+            else:
+                logger.error(f"[handle_shift_and_receipts] Не вдалося отримати PDF для X звіту (перевірте звіти для shift {sid}).")
+        else:
+            logger.error(f"[handle_shift_and_receipts] Звіт X не знайдено для зміни ({sid}).")
+            
+    # --- Блок для CLOSED (аналогічно, для Z звіту) ---
     elif new_status == 'CLOSED' and old_status != 'CLOSED':
         await send_shift_summary(user_id, kasa)
         kasa['shift_id'] = None
@@ -166,9 +207,32 @@ async def handle_shift_and_receipts(user_id, kasa):
         kasa['last_receipt_datetime'] = None
         kasa.pop('shift_start_datetime', None)
         kasa['last_receipt_id'] = None
-        kasa['receipt_counter'] = 0  # скидання лічильника чеків при закритті зміни
+        kasa['receipt_counter'] = 0  # скидання лічильника чеків
         logger.info(f"[handle_shift_and_receipts] Shift closed for kasa '{kasa_name}'")
         await bot.send_message(user_id, f"На касі '{kasa_name}' зміна закрита.")
+        
+        from_date_str = kasa.get('shift_start_datetime').isoformat() if kasa.get('shift_start_datetime') else datetime.now(timezone.utc).isoformat()
+        to_date_str = datetime.now(timezone.utc).isoformat()
+        from services.checkbox_api import get_report_receipt_info, get_receipt_pdf
+        reports = await get_report_receipt_info(lic, kasa['cashier_token'], is_z_report=True, shift_id=sid,
+                                               from_date=from_date_str, to_date=to_date_str)
+        pdf_z = None
+        if reports:
+            for rep in reports:
+                receipt_id = rep.get('last_receipt_id') or rep.get('id')
+                logger.info(f"[handle_shift_and_receipts] Trying Z report with receipt_id: {receipt_id}")
+                pdf_z = await get_receipt_pdf(kasa, receipt_id)
+                if pdf_z:
+                    logger.info(f"[handle_shift_and_receipts] Successfully retrieved Z report PDF for receipt_id: {receipt_id}")
+                    break
+            if pdf_z:
+                from aiogram.types import BufferedInputFile
+                z_file = BufferedInputFile(pdf_z, filename=f"z_report_{sid}.pdf")
+                await bot.send_document(user_id, z_file, caption=f"Z звіт для зміни ({sid})")
+            else:
+                logger.error(f"[handle_shift_and_receipts] Не вдалося отримати PDF для Z звіту (перевірте звіти для shift {sid}).")
+        else:
+            logger.error(f"[handle_shift_and_receipts] Звіт Z не знайдено для зміни ({sid}).")
     else:
         logger.info(f"[handle_shift_and_receipts] No change in shift status for kasa '{kasa_name}'")
 

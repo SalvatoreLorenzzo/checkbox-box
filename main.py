@@ -7,6 +7,10 @@ from utils.storage import check_or_create_token_file, load_token
 from handlers.start import register_start_handlers
 from handlers.add_kasa import register_add_kasa_handlers
 from handlers.general_commands import register_general_commands
+from utils.log_config import setup_logging
+
+# Ініціалізуємо логування
+setup_logging()
 
 logging.basicConfig(
     level=logging.INFO,

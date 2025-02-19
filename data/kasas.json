@@ -4,9 +4,9 @@
       "license_key": "test194f1a311af696601e8c222a",
       "pin_code": "3195239788",
       "kasa_name": "\u041a\u0430\u0441\u0430 \u21161",
-      "shift_id": "f2c95a41-bf80-4d96-8a10-0791b6576a73",
+      "shift_id": null,
       "last_receipt_datetime": null,
-      "last_receipt_id": "01e539a8-8b11-4996-a8b8-c8b24f23e622"
+      "last_receipt_id": null
     }
   ],
   "1295684614": [
@@ -14,8 +14,8 @@
       "license_key": "test9f4bed085bd2cc3ffda1bbcf",
       "pin_code": "1004246536",
       "kasa_name": "\u041a\u0430\u0441\u0430 \u21161",
-      "shift_id": "b800c5d6-bf4c-40fc-9a9e-1c55794719a2",
-      "last_receipt_datetime": "2025-02-09T22:55:41.759735+00:00",
+      "shift_id": "2aedbf13-bec3-4a5b-a608-f13fc34f0708",
+      "last_receipt_datetime": "2025-02-09T22:48:28.942706+00:00",
       "last_receipt_id": null
     }
   ]
